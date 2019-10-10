@@ -1,31 +1,43 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <a-layout id="components-layout-demo-top-side-2">
+    <AppHeader />
+    <a-layout>
+      <AppSlider />
+      <a-layout style="padding: 0 24px 24px">
+        <AppBreadcrumb />
+          <a-layout-content :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }">
+              <router-view></router-view>
+          </a-layout-content>
+      </a-layout>
+    </a-layout>
+  </a-layout>
 </template>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+  #components-layout-demo-top-side-2 .logo {
+    width: 120px;
+    height: 31px;
+    background: rgba(255, 255, 255, .2);
+    margin: 16px 28px 16px 0;
+    float: left;
+  }
 </style>
+
+<script>
+    import AppHeader from './components/AppHeader';
+    import AppSlider from "./components/AppSlider";
+    import AppBreadcrumb from "./components/AppBreadcrumb";
+    export default {
+        name: 'app',
+        components: {
+            AppBreadcrumb,
+            AppSlider,
+            AppHeader
+        },
+        data() {
+            return {
+                collapsed: false,
+            }
+        }
+    }
+</script>
