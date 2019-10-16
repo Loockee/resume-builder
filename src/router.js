@@ -1,6 +1,7 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from './views/Home.vue';
+import DataInjecter from './components/DataInjecter';
 
 Vue.use(Router);
 
@@ -12,6 +13,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/injecter',
+      name: 'injecter',
+      component: DataInjecter
     },
     {
       path: '/about',

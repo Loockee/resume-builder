@@ -24,8 +24,8 @@
         <span slot="title"><a-icon type="notification"/>subnav 3</span>
         <a-menu-item key="9">option9</a-menu-item>
         <a-menu-item key="10">option10</a-menu-item>
-        <a-menu-item key="11">option11</a-menu-item>
-        <a-menu-item key="12">option12</a-menu-item>
+        <a-menu-item @click="injecter"  key="11">Injecter</a-menu-item>
+        <a-menu-item @click="about" key="12">About</a-menu-item>
       </a-sub-menu>
     </a-menu>
   </a-layout-sider>
@@ -33,6 +33,17 @@
 
 <script>
   export default {
-      name: 'AppSlider'
+      name: 'AppSlider',
+      data() {
+          return {};
+      },
+      methods: {
+          injecter() {
+              this.$router.push({path: '/injecter'});
+          },
+          about() {
+              this.$router.push({path: '/about'});
+          }
+      }
   }
 </script>
