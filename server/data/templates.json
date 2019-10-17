@@ -1,0 +1,44 @@
+[
+  {
+    "id": "8875feeb-a5b0-4483-9982-4e5517a9eb97",
+    "name": "partnerCreated",
+    "content": {
+      "partnerId": {
+        "type": "string"
+      },
+      "firstname": {
+        "type": "string"
+      },
+      "lastname": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "id": "59c0dc2c-69ad-4a50-9ed5-85919d972149",
+    "name": "partnerUpdated",
+    "content": {
+      "partnerId": {
+        "type": "string"
+      },
+      "key": {
+        "type": "string"
+      },
+      "value": {
+        "type": "mixed"
+      },
+      "oldValue": {
+        "type": "mixed"
+      }
+    }
+  },
+  {
+    "id": "c164c566-4457-4f4b-a304-3262d411ca96",
+    "name": "partnerDeleted",
+    "content": {
+      "partnerId": {
+        "type": "string"
+      }
+    }
+  }
+]

@@ -4,12 +4,13 @@
     <a-menu
         theme="dark"
         mode="horizontal"
-        :defaultSelectedKeys="['2']"
+        :defaultSelectedKeys="['1']"
         :style="{ lineHeight: '64px' }"
     >
-      <a-menu-item key="1">nav 1</a-menu-item>
-      <a-menu-item key="2">nav 2</a-menu-item>
-      <a-menu-item key="3">nav 3</a-menu-item>
+      <a-menu-item key="1">Data plateform</a-menu-item>
+      <a-menu-item key="2" disabled>Dashboard</a-menu-item>
+      <a-menu-item key="3" disabled>Api</a-menu-item>
+      <a-menu-item key="4" disabled>Tester</a-menu-item>
     </a-menu>
   </a-layout-header>
 </template>

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "text"
+  },
+  {
+    "id": "2",
+    "name": "avro"
+  },
+  {
+    "id": "3",
+    "name": "xml"
+  },
+  {
+    "id": "4",
+    "name": "json"
+  },
+  {
+    "id": "5",
+    "name": "thrift"
+  },
+  {
+    "id": "6",
+    "name": "protobuff"
+  }
+]

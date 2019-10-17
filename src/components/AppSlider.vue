@@ -1,31 +1,27 @@
 <template>
   <a-layout-sider width="200" style="background: #fff">
     <a-menu
-        mode="inline"
-        :defaultSelectedKeys="['1']"
-        :defaultOpenKeys="['sub1']"
-        :style="{ height: '100%', borderRight: 0 }"
+      mode="inline"
+      :defaultSelectedKeys="['21']"
+      :defaultOpenKeys="['3']"
+      :style="{ height: '100%', borderRight: 0 }"
     >
-      <a-sub-menu key="sub1">
-        <span slot="title"><a-icon type="user"/>subnav 1</span>
-        <a-menu-item key="1">option1</a-menu-item>
-        <a-menu-item key="2">option2</a-menu-item>
-        <a-menu-item key="3">option3</a-menu-item>
-        <a-menu-item key="4">option4</a-menu-item>
+      <a-sub-menu key="1">
+        <span slot="title"><a-icon type="user"/>Cockpit 360</span>
+        <a-menu-item key="1">Interactions</a-menu-item>
+        <a-menu-item key="2">Activities</a-menu-item>
+        <a-menu-item key="3">Finesse</a-menu-item>
       </a-sub-menu>
-      <a-sub-menu key="sub2">
-        <span slot="title"><a-icon type="laptop"/>subnav 2</span>
-        <a-menu-item key="5">option5</a-menu-item>
-        <a-menu-item key="6">option6</a-menu-item>
-        <a-menu-item key="7">option7</a-menu-item>
-        <a-menu-item key="8">option8</a-menu-item>
+      <a-sub-menu key="2">
+        <span slot="title"><a-icon type="laptop"/>Replay</span>
+        <a-menu-item key="11">Replaying tools</a-menu-item>
+        <a-menu-item key="12">Preparing tools</a-menu-item>
+        <a-menu-item key="13">Rodeo</a-menu-item>
       </a-sub-menu>
-      <a-sub-menu key="sub3">
-        <span slot="title"><a-icon type="notification"/>subnav 3</span>
-        <a-menu-item key="9">option9</a-menu-item>
-        <a-menu-item key="10">option10</a-menu-item>
-        <a-menu-item @click="injecter"  key="11">Injecter</a-menu-item>
-        <a-menu-item @click="about" key="12">About</a-menu-item>
+      <a-sub-menu key="3">
+        <span slot="title"><a-icon type="notification"/>Matulionis</span>
+        <a-menu-item @click="injecter" key="21">Injecter</a-menu-item>
+        <a-menu-item @click="about" key="22">About</a-menu-item>
       </a-sub-menu>
     </a-menu>
   </a-layout-sider>
@@ -33,17 +29,20 @@
 
 <script>
   export default {
-      name: 'AppSlider',
-      data() {
-          return {};
+    name: 'AppSlider',
+    data() {
+      return {};
+    },
+    methods: {
+      route(routeName) {
+        this.$router.push({path: `/${routeName}`});
       },
-      methods: {
-          injecter() {
-              this.$router.push({path: '/injecter'});
-          },
-          about() {
-              this.$router.push({path: '/about'});
-          }
+      injecter() {
+        this.route('injecter');
+      },
+      about() {
+        this.route('about');
       }
+    }
   }
 </script>

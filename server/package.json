@@ -1,0 +1,32 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "description": "simple embedded data server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js",
+    "test": "mocha"
+  },
+  "keywords": [
+    "test",
+    "embedded",
+    "server"
+  ],
+  "author": "mehdi.lefebvre@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "@koa/cors": "^2.2.3",
+    "koa": "^2.10.0",
+    "koa-body": "^4.1.1",
+    "koa-body-parser": "^1.1.2",
+    "koa-bunyan-logger": "^2.1.0",
+    "koa-requestid": "^2.1.0",
+    "koa-router": "^7.4.0",
+    "request": "^2.88.0",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}

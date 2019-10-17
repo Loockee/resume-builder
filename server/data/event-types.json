@@ -1,0 +1,17 @@
+[
+  {
+    "id": "1",
+    "name": "partnerCreated",
+    "description": "Event which indicates that a partner has been created"
+  },
+  {
+    "id": "2",
+    "name": "partnerUpdated",
+    "description": "Update an existing partner"
+  },
+  {
+    "id": "3",
+    "name": "partnerDeleted",
+    "description": "Delete a  partner on the api"
+  }
+]
