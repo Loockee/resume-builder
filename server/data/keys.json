@@ -3,5 +3,6 @@
   "firstname",
   "lastname",
   "email",
-  "phoneNumber"
+  "phoneNumber",
+  "context"
 ]

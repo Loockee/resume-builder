@@ -6,6 +6,9 @@
       "partnerId": {
         "type": "string"
       },
+      "context": {
+        "type": "string"
+      },
       "firstname": {
         "type": "string"
       },

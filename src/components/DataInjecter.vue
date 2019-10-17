@@ -38,6 +38,7 @@
                                     <a-form-item label="Key" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
                                         <!--<a-input placeholder="Enter the value of the key" v-model="f.key"/>-->
                                       <a-auto-complete
+                                        v-model="f.key"
                                         placeholder="Enter the value of the key"
                                         :dataSource="allAvailableKeys"
                                         style="width: 200px"
@@ -150,12 +151,13 @@
         Object.keys(template.content).filter(k => k !== '').forEach(k => {
           // TODO: evaluate the type here
           const item = {
-            id: i++,
+            id: ++i,
             key: k,
             value: '',
           };
           f.push(item);
         });
+        console.log(f);
         this.fields = f;
       },
       addField() {
