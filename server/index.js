@@ -29,6 +29,10 @@ router.get('/api/v1/event-types', async (ctx, next) => {
   await loadData('event-types', ctx, next);
 });
 
+router.get('/api/v1/keys', async (ctx, next) => {
+  await loadData('keys', ctx, next);
+});
+
 app.use(koaBunyanLogger())
   .use(koaBody({
     jsonLimit: '1kb'

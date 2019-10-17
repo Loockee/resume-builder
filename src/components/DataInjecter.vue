@@ -36,7 +36,12 @@
                             <a-row :gutter="16">
                                 <a-col class="gutter-row" :span="12">
                                     <a-form-item label="Key" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
-                                        <a-input placeholder="Enter the value of the key" v-model="f.key"/>
+                                        <!--<a-input placeholder="Enter the value of the key" v-model="f.key"/>-->
+                                      <a-auto-complete
+                                        placeholder="Enter the value of the key"
+                                        :dataSource="allAvailableKeys"
+                                        style="width: 200px"
+                                      />
                                     </a-form-item>
                                 </a-col>
                                 <a-col class="gutter-row" :span="12">
@@ -79,7 +84,8 @@
     name: 'DataInjecter',
     computed: mapGetters([
       'allTemplates', 'getTemplateById', 'allSerializationTypes',
-      'serializationTypeById', 'allEventTypes', 'eventTypeById'
+      'serializationTypeById', 'allEventTypes', 'eventTypeById',
+      'allAvailableKeys'
     ]),
     data() {
       return {
@@ -98,7 +104,7 @@
       }
     },
     methods: {
-      ...mapActions(['fetchTemplates', 'fetchSerializationTypes', 'fetchEventTypes']),
+      ...mapActions(['fetchTemplates', 'fetchSerializationTypes', 'fetchEventTypes', 'fetchKeys']),
       getTemplates() {
         return this.$store.getters.allTemplates.map(({name, id}) => ({id, name}));
       },
@@ -167,6 +173,7 @@
       this.fetchTemplates();
       this.fetchSerializationTypes();
       this.fetchEventTypes();
+      this.fetchKeys();
     }
   }
 </script>
