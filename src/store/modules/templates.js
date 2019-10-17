@@ -3,7 +3,8 @@ import axios from 'axios';
 const state = {
   templates: [],
   serializationTypes: [],
-  eventTypes: []
+  eventTypes: [],
+  keys:[]
 };
 
 const getters = {
@@ -12,7 +13,8 @@ const getters = {
   allSerializationTypes: (state) => (state.serializationTypes),
   serializationTypeById: (state) => (id) => (state.serializationTypes.filter(s => s.id === id)[0]),
   allEventTypes: (state) => (state.eventTypes),
-  eventTypeById: (state) => (id) => (state.eventTypes.filter(e => e.id === id)[0])
+  eventTypeById: (state) => (id) => (state.eventTypes.filter(e => e.id === id)[0]),
+  allAvailableKeys: (state) => (state.keys)
 };
 
 const actions = {
@@ -30,6 +32,11 @@ const actions = {
     const response = await axios.get('http://localhost:4301/api/v1/event-types');
     const { content } = response.data;
     commit('setEventTypes', content);
+  },
+  async fetchKeys({commit}) {
+    const response = await axios.get('http://localhost:4301/api/v1/keys');
+    const { content } = response.data;
+    commit('setKeys', content);
   }
 };
 
@@ -37,6 +44,7 @@ const mutations = {
   setTemplates: (state, templates) => (state.templates = templates),
   setSerializationTypes: (state, types) => (state.serializationTypes = types),
   setEventTypes: (state, types) => (state.eventTypes = types),
+  setKeys: (state, keys) => (state.keys = keys),
 };
 
 export default {
