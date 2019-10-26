@@ -2,12 +2,19 @@
   {
     "id": "8875feeb-a5b0-4483-9982-4e5517a9eb97",
     "name": "partnerCreated",
+    "description": "Event which indicates that a partner has been created",
     "content": {
       "partnerId": {
-        "type": "string"
+        "type": "string",
+        "required" : true
       },
       "context": {
-        "type": "string"
+        "type": "string",
+        "required" : true
+      },
+      "email": {
+        "type": "string",
+        "required" : true
       },
       "firstname": {
         "type": "string"
@@ -20,27 +27,100 @@
   {
     "id": "59c0dc2c-69ad-4a50-9ed5-85919d972149",
     "name": "partnerUpdated",
+    "description": "Update an existing partner",
     "content": {
       "partnerId": {
-        "type": "string"
+        "type": "string",
+        "required" : true
+      },
+      "context": {
+        "type": "string",
+        "required" : true
       },
       "key": {
-        "type": "string"
+        "type": "string",
+        "required" : true
       },
       "value": {
-        "type": "mixed"
+        "type": "mixed",
+        "required" : true
       },
       "oldValue": {
-        "type": "mixed"
+        "type": "mixed",
+        "required" : true
       }
     }
   },
   {
     "id": "c164c566-4457-4f4b-a304-3262d411ca96",
     "name": "partnerDeleted",
+    "description": "Delete a  partner on the api",
     "content": {
       "partnerId": {
+        "type": "string",
+        "required" : true
+      },
+      "context": {
+        "type": "string",
+        "required" : true
+      }
+    }
+  },
+  {
+    "id": "cf5147c3-0f70-4344-b10c-f488cefc6a5d",
+    "name": "chatBotMessage",
+    "description": "Represents a new chat bot message recieved by the system",
+    "content": {
+      "conversationId": {
+        "type": "string",
+        "required" : true
+      },
+      "owner": {
+        "type": "string",
+        "required" : true,
+        "acceptedValues": [
+          "bot", "client"
+        ]
+      },
+      "messageContent": {
+        "type": "string",
+        "required" : true
+      },
+      "partnerId": {
         "type": "string"
+      },
+      "partnerEmail": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "id": "4ba132a9-1f82-4178-a867-9c5ab5e809f4",
+    "name": "agencyVisitCreated",
+    "description": "Represents a new chat bot message recieved by the Indicates that a new visit in agency has been created",
+    "content": {
+      "type": {
+        "type": "string",
+        "required" : true
+      },
+      "note": {
+        "type": "string",
+        "required" : true
+      },
+      "partnerId": {
+        "type": "string",
+        "required" : true
+      },
+      "partnerEmail": {
+        "type": "string"
+      },
+      "administratorId": {
+        "type": "string",
+        "required" : true
+      },
+      "agencyId": {
+        "type": "string",
+        "required" : true
       }
     }
   }

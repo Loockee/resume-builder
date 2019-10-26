@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
+import Cockpit360 from './views/Cockpit360.vue';
 import DataInjecter from './components/DataInjecter';
 
 Vue.use(Router);
@@ -13,6 +14,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/cockpit360',
+      name: 'cockpit360',
+      component: Cockpit360
     },
     {
       path: '/injecter',
@@ -28,4 +34,4 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     }
   ]
-})
+});

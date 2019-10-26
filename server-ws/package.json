@@ -1,0 +1,26 @@
+{
+  "name": "server-ws",
+  "version": "0.0.0",
+  "description": "a simple websocket test",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js",
+    "test": "mocha"
+  },
+  "keywords": [
+    "test",
+    "websocket",
+    "cdp"
+  ],
+  "author": "mehdi.lefebvre@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "moment": "^2.24.0",
+    "uuid": "^3.3.3",
+    "websocket": "^1.0.30"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}

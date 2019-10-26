@@ -12,10 +12,12 @@
                             <a-button style="margin-left: 8px"> Import template <a-icon type="down" /> </a-button>
                         </a-dropdown>
                     </div>
-                    <a-form @submit="injectData">
+                    <a-form :form="form" @submit="injectData">
                         <a-row>
                             <a-form-item label="Event Type" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
-                                <a-select defaultValue="partnerCreated" @change="handleEventTypeChanged">
+                                <a-select default-value="partnerCreated"
+                                          v-decorator="['key', { rules: [{ required: true, message: 'Field is required!' }] }]"
+                                          @change="handleEventTypeChanged">
                                     <a-select-option v-for="t in allEventTypes" v-bind:key="t.id">
                                         {{t.name}}
                                     </a-select-option>
@@ -23,9 +25,12 @@
                             </a-form-item>
                         </a-row>
                         <a-row>
-                            <a-form-item label="Serialization type" :label-col="{ span: 5 }"
+                            <a-form-item label="Serialization type"
+                                         :label-col="{ span: 5 }"
                                          :wrapper-col="{ span: 12 }">
-                                <a-select defaultValue="text" @change="handleSerializationChanged">
+                                <a-select default-value="text"
+                                          v-decorator="['key', { rules: [{ required: true, message: 'Field is required!' }] }]"
+                                          @change="handleSerializationChanged">
                                     <a-select-option :value="t.id" v-for="t in allSerializationTypes" v-bind:key="t.id">
                                         {{t.name}}
                                     </a-select-option>
@@ -35,19 +40,26 @@
                         <a-row v-for="f in fields" v-bind:key="f.id">
                             <a-row :gutter="16">
                                 <a-col class="gutter-row" :span="12">
-                                    <a-form-item label="Key" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
+                                    <a-form-item label="Key"
+                                                 :label-col="{ span: 5 }"
+                                                 :wrapper-col="{ span: 12 }">
                                         <!--<a-input placeholder="Enter the value of the key" v-model="f.key"/>-->
                                       <a-auto-complete
                                         v-model="f.key"
                                         placeholder="Enter the value of the key"
                                         :dataSource="allAvailableKeys"
+                                        allowClear
                                         style="width: 200px"
+                                        v-decorator="['key', { rules: [{ required: true, message: 'Field is required!' }] }]"
                                       />
                                     </a-form-item>
                                 </a-col>
                                 <a-col class="gutter-row" :span="12">
                                     <a-form-item label="Value" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
-                                        <a-input placeholder="Enter the value associates to the key" v-model="f.value"/>
+                                        <a-input placeholder="Enter the value associates to the key"
+                                                 allowClear
+                                                 v-decorator="['value', { rules: [{ required: true, message: 'Field is required' }] }]"
+                                                 v-model="f.value"/>
                                     </a-form-item>
                                 </a-col>
                             </a-row>
@@ -101,7 +113,9 @@
             key: '',
             value: ''
           }
-        ]
+        ],
+        formLayout: 'horizontal',
+        form: this.$form.createForm(this, { name: 'idataInjector' }),
       }
     },
     methods: {
@@ -111,24 +125,29 @@
       },
       handleEventTypeChanged(e) {
         const a = this.$store.getters.eventTypeById(e);
-        console.log(a);
         if(a.length) {
           this.selectedEventType = a[0];
         }
       },
       handleSerializationChanged(e) {
-        this.selectedEventType = this.$store.getters.serializationTypeById(e);
+        this.selectedSerializationType = this.$store.getters.serializationTypeById(e);
       },
       injectData() {
         console.log('injecting data to the system');
       },
       getEventType() {
+        if(!this.selectedEventType) {
+          this.selectedEventType = this.$store.getters.allEventTypes[0];
+        }
         return this.selectedEventType.name;
       },
       getEventTypeByName(name) {
         return this.$store.getters.allEventTypes.filter(({n}) => (n === name))[0];
       },
       getSerializationType() {
+        if(!this.selectedSerializationType) {
+          this.selectedSerializationType = this.$store.getters.allSerializationTypes[0];
+        }
         return this.selectedSerializationType.name;
       },
       generateData() {
@@ -157,7 +176,6 @@
           };
           f.push(item);
         });
-        console.log(f);
         this.fields = f;
       },
       addField() {
@@ -174,7 +192,7 @@
     created() {
       this.fetchTemplates();
       this.fetchSerializationTypes();
-      this.fetchEventTypes();
+      //this.fetchEventTypes();
       this.fetchKeys();
     }
   }

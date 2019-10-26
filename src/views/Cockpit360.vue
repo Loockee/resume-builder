@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <p>Work in progress, dahboard will be available soon</p>
+    <Search />
   </div>
 </template>
 
